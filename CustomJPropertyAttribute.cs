@@ -5,38 +5,62 @@ using System.Text;
 namespace Berry.Serialization
 {
     /// <summary>
-    /// 属性自定义特性。
+    /// Instructs the serialize name and ability.
     /// </summary>
-    public class CustomJPropertyAttribute : Attribute
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
+    public sealed class CustomJPropertyAttribute : Attribute
     {
+        #region Constructor
+        /// <summary>
+        /// Initializes a new instance of the Berry.Serialization.CustomJPropertyAttribute class.
+        /// </summary>
         public CustomJPropertyAttribute()
         {
             Serializable = true;
             Deserializable = true;
         }
 
-        public CustomJPropertyAttribute(string name)
+        /// <summary>
+        /// Initializes a new instance of the Berry.Serialization.CustomJPropertyAttribute class
+        /// with the specified name.
+        /// </summary>
+        /// <param name="propertyName"></param>
+        public CustomJPropertyAttribute(string propertyName)
         {
             Serializable = true;
             Deserializable = true;
-            Name = name;
+            Name = propertyName;
         }
+        #endregion
+
+        #region Public Properties
         /// <summary>
-        /// 属性是否可以被序列化
+        /// Gets or sets a value indicating whether serialize the property.
+        /// The default value is true.
         /// </summary>
-        public bool Serializable { get; set; }
+        public bool Serializable { get; set; } = true;
+
         /// <summary>
-        /// 属性是否可以被反序列化
+        /// Gets or sets a value indicating whether deserialize the property .
+        /// The default value is true.
         /// </summary>
-        public bool Deserializable { get; set; }
+        public bool Deserializable { get; set; } = true;
+
         /// <summary>
-        /// 属性序列化的Json字段名
+        /// Gets or sets the name of the property when serializing.
         /// </summary>
-        public string Name { get; set; }
         public string SerializeName { get; set; }
+
         /// <summary>
-        /// 属性反序列化的Json字段名
+        /// Gets or sets the name of the property when deserializing.
         /// </summary>
         public string DeserializeName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the property when serializing or deserializing.
+        /// The priority is lower than <see cref="SerializeName"/> and <see cref="DeserializeName"/>.
+        /// </summary>
+        public string Name { get; set; }
+        #endregion
     }
 }

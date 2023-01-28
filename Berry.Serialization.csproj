@@ -1,13 +1,39 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <OutputType>Exe</OutputType>
+    <TargetFrameworks>netstandard2.0;net40</TargetFrameworks>
+    <OutputType>Library</OutputType>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <Authors>yangfan</Authors>
+    <Description>基于 [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) 设计的 JSON 类型 和 .NET 类型转换器。包含一个自定义特性 CustomJPropertyAttribute ，用于分别控制属性是否支持序列化与反序列化，以及自定义序列化和反序列化的属性名。
+
+A JSON types and .NET types converter based on [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) . Include a custom .net attribute CustomJPropertyAttribute, used to control whether the property supports serialization and deserialization, and to customize the property name when serializing and deserializing, respectively.</Description>
+    <Copyright>© theyangfan 2023. All rights reserved.</Copyright>
+    <PackageProjectUrl>https://github.com/theyangfan/Berry.Serialization</PackageProjectUrl>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/theyangfan/Berry.Serialization</RepositoryUrl>
+    <PackageTags>custom json serialization</PackageTags>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
