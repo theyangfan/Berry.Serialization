@@ -40,6 +40,8 @@ public class Person
 #### 使用(Usage)
 
 ```c#
+using Berry.Serialization;
+
 string json = "{\"姓名\": \"张伟\",\"年龄\": 20}";
 Person person = CustomJConvert.DeserializeObject<Person>(json);
 Console.WriteLine(CustomJConvert.SerializeObject(person));
